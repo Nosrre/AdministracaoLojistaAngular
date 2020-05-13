@@ -1,16 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 //imports modulos projeto
-import { MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { Routes, RouterModule} from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
-import { MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 
-import { MatButtonModule} from '@angular/material/button';
-import { MatInputModule} from '@angular/material/input';
-import { MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,13 +28,18 @@ import { LojaComponent } from './loja/loja/loja.component';
 import { EditarLojaComponent } from './loja/editar-loja/editar-loja.component';
 import { ListarLojaComponent } from './loja/listar-loja/listar-loja.component';
 import { CadastrarLojaComponent } from './loja/cadastrar-loja/cadastrar-loja.component';
+import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'cadastrarLocatario', component: CadastrarLocatarioComponent },
   { path: 'cadastrarLoja', component: CadastrarLojaComponent },
-  { path: 'listarLocatario', component: ListaLocatarioComponent},
-  { path: 'listarLoja', component: ListarLojaComponent}
+  { path: 'listarLocatario', component: ListaLocatarioComponent },
+  { path: 'listarLoja', component: ListarLojaComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({
@@ -46,7 +53,10 @@ const routes: Routes = [
     LojaComponent,
     EditarLojaComponent,
     ListarLojaComponent,
-    CadastrarLojaComponent
+    CadastrarLojaComponent,
+    FooterComponent,
+    HomeComponent,
+    LoginComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -58,7 +68,9 @@ const routes: Routes = [
     MatMenuModule,
     MatButtonModule,
     MatInputModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
