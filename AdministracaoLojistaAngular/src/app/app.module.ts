@@ -36,16 +36,18 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { LojaCreateComponent } from './loja/loja-create/loja-create.component';
 import { MatCardModule } from  '@angular/material/card';
+import { LocatarioCreateComponent } from './locatario/locatario-create/locatario-create.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'cadastrarLocatario', component: CadastrarLocatarioComponent },
   { path: 'cadastrarLoja', component: CadastrarLojaComponent },
   { path: 'listarLocatario', component: ListaLocatarioComponent },
-  { path: 'listarLoja', component: ListarLojaComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'lojaCreate', component: LojaCreateComponent },
+  { path: 'locatarioCreate', component: LocatarioCreateComponent },
+  { path: 'listarLoja', component: ListarLojaComponent },
 ];
 
 @NgModule({
@@ -64,6 +66,7 @@ const routes: Routes = [
     HomeComponent,
     LoginComponent,
     LojaCreateComponent,
+    LocatarioCreateComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
