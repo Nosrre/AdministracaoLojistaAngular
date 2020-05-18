@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarLojaComponent implements OnInit {
 
+  displayedColumns = ['id', 'name', 'price', 'action']
   constructor() { }
 
   ngOnInit(): void {

@@ -31,6 +31,11 @@ import { CadastrarLojaComponent } from './loja/cadastrar-loja/cadastrar-loja.com
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { LojaCreateComponent } from './loja/loja-create/loja-create.component';
+import { MatCardModule } from  '@angular/material/card';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -40,6 +45,7 @@ const routes: Routes = [
   { path: 'listarLoja', component: ListarLojaComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'lojaCreate', component: LojaCreateComponent },
 ];
 
 @NgModule({
@@ -57,6 +63,7 @@ const routes: Routes = [
     FooterComponent,
     HomeComponent,
     LoginComponent,
+    LojaCreateComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -70,7 +77,11 @@ const routes: Routes = [
     MatInputModule,
     MatAutocompleteModule,
     FormsModule,
-    ReactiveFormsModule
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    ReactiveFormsModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent],
