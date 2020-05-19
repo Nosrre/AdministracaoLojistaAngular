@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lista-locatario.component.css']
 })
 export class ListaLocatarioComponent implements OnInit {
-  displayedColumns = ['id', 'name', 'price', 'action']
+  displayedColumns = ['id', 'name','documento','contato','endereco','contrato', 'action']
   
   constructor() { } 
   
