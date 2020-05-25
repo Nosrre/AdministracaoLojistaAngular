@@ -1,0 +1,19 @@
+{
+    "locatarios" : [{
+            "id" : 1,
+            "nome" : "Teste",
+            "documento" : "123",
+            "contato" : "9879654321",
+            "endereco" : "rua tal",
+            "contrato" : "98787"
+        }, 
+        {
+            "id" : 2,
+            "nome" : "Teste2",
+            "documento" : "123",
+            "contato" : "9879654321",
+            "endereco" : "rua tal",
+            "contrato" : "98787"
+        }
+    ]
+}

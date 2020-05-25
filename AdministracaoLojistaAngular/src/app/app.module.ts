@@ -6,13 +6,16 @@ import { NgModule } from '@angular/core';
 //imports modulos projeto
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { Routes, RouterModule } from '@angular/router';
-
 import { MatMenuModule } from '@angular/material/menu';
-
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatCardModule } from  '@angular/material/card';
+import { Routes, RouterModule } from '@angular/router';
+import {HttpClientModule} from  '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,11 +34,7 @@ import { CadastrarLojaComponent } from './loja/cadastrar-loja/cadastrar-loja.com
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
 import { LojaCreateComponent } from './loja/loja-create/loja-create.component';
-import { MatCardModule } from  '@angular/material/card';
 import { LocatarioCreateComponent } from './locatario/locatario-create/locatario-create.component';
 
 const routes: Routes = [
@@ -84,7 +83,9 @@ const routes: Routes = [
     MatPaginatorModule,
     MatSortModule,
     ReactiveFormsModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule,
+    MatCardModule, 
   ],
   providers: [],
   bootstrap: [AppComponent],
