@@ -47,6 +47,7 @@ const routes: Routes = [
   { path: 'lojaCreate', component: LojaCreateComponent },
   { path: 'locatarioCreate', component: LocatarioCreateComponent },
   { path: 'listarLoja', component: ListarLojaComponent },
+  { path: 'editarLocatario', component: EditarLocatarioComponent }
 ];
 
 @NgModule({
@@ -85,7 +86,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatCardModule,
     HttpClientModule,
-    MatCardModule, 
+    MatCardModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

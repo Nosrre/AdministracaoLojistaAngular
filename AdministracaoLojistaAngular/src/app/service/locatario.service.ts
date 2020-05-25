@@ -8,7 +8,7 @@ import {retry, catchError} from 'rxjs/operators';
     providedIn: "root"
 })
 export class LocatarioService {
-    private url: 'http://localhost:3000/locatarios';
+    private url = 'http://localhost:3000/locatarios';
 
     constructor(private http: HttpClient){}
 
@@ -16,12 +16,17 @@ export class LocatarioService {
         headers: new HttpHeaders({'Contente-Type': 'application/json'})
     }
 
-    public getAll(): Observable<Locatario[]>{
+    public listAll(): Observable<Locatario[]>{
         return this.http.get<Locatario[]>(this.url).pipe(
                 retry(2),
                 catchError(this.handleError)
             )
     }
+
+    public update(){
+    }
+
+    
 
     handleError(error: HttpErrorResponse) {
         let errorMessage = '';

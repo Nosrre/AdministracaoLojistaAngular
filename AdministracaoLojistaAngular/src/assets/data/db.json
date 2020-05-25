@@ -1,5 +1,6 @@
 {
-    "locatarios" : [{
+    "locatarios" : [
+        {
             "id" : 1,
             "nome" : "Teste",
             "documento" : "123",

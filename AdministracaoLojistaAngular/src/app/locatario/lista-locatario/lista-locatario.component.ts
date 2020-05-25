@@ -8,6 +8,7 @@ import {Locatario} from '../../model/locatario';
   styleUrls: ['./lista-locatario.component.css']
 })
 export class ListaLocatarioComponent implements OnInit {
+  displayedColumns = ['id', 'name','documento','contato','endereco','contrato', 'action'];
 
   locatarios: Locatario[];
   locatario = {} as Locatario;
@@ -15,12 +16,12 @@ export class ListaLocatarioComponent implements OnInit {
   constructor(private locatarioService: LocatarioService) { }
 
   ngOnInit(): void {
-    this.getAll();
+    this.listAll();
   }
 
-  getAll(): void{
-    this.locatarioService.getAll().subscribe((locatarios: Locatario[]) => {
+  listAll(): void{
+    this.locatarioService.listAll().subscribe((locatarios: Locatario[]) => {
       this.locatarios = locatarios;
-    })
+    });
   }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {LocatarioService} from '../../service/locatario.service';
+import {Locatario} from '../../model/locatario';
 
 @Component({
   selector: 'app-editar-locatario',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditarLocatarioComponent implements OnInit {
 
-  constructor() { }
+  locatario: Locatario;
+
+  constructor(private locatarioService: LocatarioService) { }
 
   ngOnInit(): void {
+  }
+
+  update(): void{
   }
 
 }
