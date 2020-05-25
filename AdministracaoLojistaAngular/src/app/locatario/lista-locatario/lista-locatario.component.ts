@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {LocatarioService} from '../../service/locatario.service';
+import {Locatario} from '../../model/locatario';
 
 @Component({
   selector: 'app-lista-locatario',
@@ -6,12 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lista-locatario.component.css']
 })
 export class ListaLocatarioComponent implements OnInit {
-  displayedColumns = ['id', 'name','documento','contato','endereco','contrato', 'action']
-  
-  constructor() { } 
-  
+
+  locatarios: Locatario[];
+  locatario = {} as Locatario;
+
+  constructor(private locatarioService: LocatarioService) { }
 
   ngOnInit(): void {
+    this.getAll();
   }
 
+  getAll(): void{
+    this.locatarioService.getAll().subscribe((locatarios: Locatario[]) => {
+      this.locatarios = locatarios;
+    })
+  }
 }
