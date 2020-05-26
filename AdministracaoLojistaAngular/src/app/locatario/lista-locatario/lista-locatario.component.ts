@@ -25,6 +25,12 @@ export class ListaLocatarioComponent implements OnInit {
     });
   }
 
+  getById(id: number) {
+    this.locatarioService.getById(id).subscribe((locatario: Locatario) => {
+      this.locatario = locatario;
+    });
+  }
+
   delete(locatario: Locatario) {
     this.locatarioService.delete(locatario).subscribe(() => {
       this.listAll();
