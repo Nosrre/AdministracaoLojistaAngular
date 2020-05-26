@@ -25,6 +25,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatCardModule } from  '@angular/material/card';
+import { MatDialogModule} from  '@angular/material/dialog';
 import { Routes, RouterModule } from '@angular/router';
 import {HttpClientModule} from  '@angular/common/http';
 
@@ -51,7 +52,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'cadastrarLocatario', component: CadastrarLocatarioComponent },
-  { path: 'cadastrarLocatario/:id', component: CadastrarLocatarioComponent },
+  { path: 'editarLocatario/:id', component: EditarLocatarioComponent },
   { path: 'editarLocatario', component: EditarLocatarioComponent },
   { path: 'listarLocatario', component: ListaLocatarioComponent },
   { path: 'cadastrarLoja', component: CadastrarLojaComponent },
@@ -103,7 +104,8 @@ const routes: Routes = [
     MatNativeDateModule,
     MatProgressSpinnerModule,
     MatGridListModule,
-    MatListModule
+    MatListModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent],
