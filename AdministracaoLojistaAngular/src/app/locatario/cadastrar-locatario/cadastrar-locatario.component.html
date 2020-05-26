@@ -1,7 +1,40 @@
+<div class="locatario-parent">
+    <h2>CADASTRAR LOCATÁRIO</h2>
+    <form class="locatario" id="add-form" (ngSubmit)="f.form.valid && add(f)" #f="ngForm" novalidate>
 
-<button mat-raised-button routerLink="/locatarioCreate"
-color="primary">
-Novo locatario
-</button>
+        <mat-form-field class="locatario-full-width">
+            <mat-label> Nome</mat-label>
+            <input type="text" matInput value="" [(ngModel)]="locatario.nome" id="model" name="model" #model="ngModel" required  [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+            <mat-error *ngIf="f.submitted && model.invalid" class="invalid-feedback">
+                <mat-error *ngIf="model.errors.required">Favor informar o nome do locatário.</mat-error>
+            </mat-error>
+        </mat-form-field>
 
-<app-lista-locatario></app-lista-locatario>
+        <mat-form-field class="locatario-full-width">
+            <mat-label> Documento</mat-label>
+            <input type="text" matInput value="" [(ngModel)]="locatario.documento" id="model" name="model" #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+            <mat-error *ngIf="f.submitted && model.invalid" class="invalid-feedback">
+                <mat-error *ngIf="model.errors.required">Favor informar um número de documento do locatário.</mat-error>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="locatario-full-width">
+            <mat-label> Contato</mat-label>
+            <input type="text" matInput value="" [(ngModel)]="locatario.contato" id="model" name="model" #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+            <mat-error *ngIf="f.submitted && model.invalid" class="invalid-feedback">
+                <mat-error *ngIf="model.errors.required">Favor informar um contato do locatário.</mat-error>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="locatario-full-width">
+            <mat-label> Endereço</mat-label>
+            <input type="text" matInput value="" [(ngModel)]="locatario.endereco" id="model" name="model" #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+            <mat-error *ngIf="f.submitted && model.invalid" class="invalid-feedback">
+                <mat-error *ngIf="model.errors.required">Favor informar o endereço do locatário.</mat-error>
+            </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary">Salvar</button>
+
+    </form>
+</div>

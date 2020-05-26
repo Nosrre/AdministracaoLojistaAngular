@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { LocatarioService } from '../../service/locatario.service';
+import { Locatario } from '../../model/locatario';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-cadastrar-locatario',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastrarLocatarioComponent implements OnInit {
 
-  constructor() { }
+  locatario = {} as Locatario;
+
+  constructor(private locatarioService: LocatarioService) { }
 
   ngOnInit(): void {
+  }
+
+  add(form: NgForm){
+    this.locatarioService.add(this.locatario).subscribe(() => {
+      this.cleanForm(form);
+    });
+  }
+
+  cleanForm(form: NgForm) {
+    form.resetForm();
+    this.locatario = {} as Locatario;
   }
 
 }

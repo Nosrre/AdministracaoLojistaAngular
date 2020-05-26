@@ -24,4 +24,11 @@ export class ListaLocatarioComponent implements OnInit {
       this.locatarios = locatarios;
     });
   }
+
+  delete(locatario: Locatario) {
+    this.locatarioService.delete(locatario).subscribe(() => {
+      this.listAll();
+    });
+  }
+
 }

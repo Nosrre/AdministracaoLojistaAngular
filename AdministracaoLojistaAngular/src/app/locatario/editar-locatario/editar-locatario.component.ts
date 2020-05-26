@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {LocatarioService} from '../../service/locatario.service';
-import {Locatario} from '../../model/locatario';
+import { LocatarioService } from '../../service/locatario.service';
+import { Locatario } from '../../model/locatario';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-editar-locatario',
@@ -9,14 +10,22 @@ import {Locatario} from '../../model/locatario';
 })
 export class EditarLocatarioComponent implements OnInit {
 
-  locatario: Locatario;
+  locatario = {} as Locatario;
 
   constructor(private locatarioService: LocatarioService) { }
 
   ngOnInit(): void {
   }
 
-  update(): void{
+  update(form: NgForm){
+    this.locatarioService.update(this.locatario).subscribe(() => {
+      this.cleanForm(form);
+    });
+  }
+
+  cleanForm(form: NgForm) {
+    form.resetForm();
+    this.locatario = {} as Locatario;
   }
 
 }

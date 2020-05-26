@@ -17,16 +17,45 @@ export class LocatarioService {
     }
 
     public listAll(): Observable<Locatario[]>{
-        return this.http.get<Locatario[]>(this.url).pipe(
-                retry(2),
-                catchError(this.handleError)
-            )
+        return this.http.get<Locatario[]>(this.url)
+          .pipe(
+              retry(2),
+              catchError(this.handleError)
+          )
     }
 
-    public update(){
+    getById(id: number): Observable<Locatario> {
+      return this.http.get<Locatario>(this.url + '/' + id)
+        .pipe(
+          retry(2),
+          catchError(this.handleError)
+        )
     }
 
-    
+    add(locatario: Locatario): Observable<Locatario> {
+      return this.http.post<Locatario>(this.url, JSON.stringify(locatario), this.httpOptions)
+        .pipe(
+          retry(2),
+          catchError(this.handleError)
+        )
+    }
+
+    //criar update no back
+    update(locatario: Locatario): Observable<Locatario> {
+      return this.http.put<Locatario>(this.url + '/' + locatario.id, JSON.stringify(locatario), this.httpOptions)
+        .pipe(
+          retry(1),
+          catchError(this.handleError)
+        )
+    }
+
+    delete(locatario: Locatario) {
+      return this.http.delete<Locatario>(this.url + '/' + locatario.id, this.httpOptions)
+        .pipe(
+          retry(1),
+          catchError(this.handleError)
+        )
+    }
 
     handleError(error: HttpErrorResponse) {
         let errorMessage = '';
