@@ -8,6 +8,7 @@ import {retry, catchError} from 'rxjs/operators';
     providedIn: "root"
 })
 export class LocatarioService {
+  //lembrar qual o endpoint
     private url = 'http://localhost:3000/locatarios';
 
     constructor(private http: HttpClient){}

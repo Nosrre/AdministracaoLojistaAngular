@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-// import {UserService} from '../user.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
+import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -9,24 +11,59 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  // constructor(private router:Router, private user:UserService) { }
-  constructor(private router:Router) {   }
+  loginForm: FormGroup;
+  loading = false;
+  submitted = false;
+  returnUrl: string;
+  error = '';
 
-  ngOnInit(): void {
+  constructor(
+      private formBuilder: FormBuilder,
+      private route: ActivatedRoute,
+      private router: Router,
+      private authenticationService: AuthenticationService
+  ) {
+      // redirect to home if already logged in
+      if (this.authenticationService.currentUserValue) {
+          this.router.navigate(['']);
+      }
   }
-  
-  loginUser(e) {  
-    debugger;  
-  	e.preventDefault();
-    console.log(e);
-    let username = ((document.getElementById("userName")) as HTMLInputElement).value;
-    let password = ((document.getElementById("password")) as HTMLInputElement).value;
-  	debugger;
-  	if(username == 'admin' && password == 'admin') {
-      this.router.navigate(['home']);
-      return;
-    }
-    this.router.navigate(['cadastrarLocatario']);
+
+  ngOnInit() {
+      this.loginForm = this.formBuilder.group({
+          username: ['', Validators.required],
+          password: ['', Validators.required]
+      });
+
+      // get return url from route parameters or default to '/home'
+      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
+  }
+
+  // convenience getter for easy access to form fields
+  get f() {
+      return this.loginForm.controls;
+  }
+
+  onSubmit() {
+      this.submitted = true;
+
+      // stop here if form is invalid
+      if (this.loginForm.invalid) {
+          return;
+      }
+
+      this.loading = true;
+      this.authenticationService.login(this.f.username.value, this.f.password.value)
+          .pipe(first())
+          .subscribe(
+              data => {
+                  this.router.navigate([this.returnUrl]);
+                  this.authenticationService.setUserName(this.f.username.value);
+              },
+              error => {
+                  this.error = error;
+                  this.loading = false;
+              });
   }
 
 }

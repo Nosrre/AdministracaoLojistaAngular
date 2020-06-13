@@ -4,7 +4,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 //imports modulos projeto
-
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -27,7 +26,11 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatCardModule } from  '@angular/material/card';
 import { MatDialogModule} from  '@angular/material/dialog';
 import { Routes, RouterModule } from '@angular/router';
-import {HttpClientModule} from  '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { AuthGuardService } from './service/auth-guard.service'; 
+import { JwtInterceptor } from './service/jwt-interceptor'; 
+import { ErrorInterceptor } from './service/error-interceptor'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -51,13 +54,13 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'cadastrarLocatario', component: CadastrarLocatarioComponent },
-  { path: 'editarLocatario/:id', component: EditarLocatarioComponent },
-  { path: 'editarLocatario', component: EditarLocatarioComponent },
-  { path: 'listarLocatario', component: ListaLocatarioComponent },
-  { path: 'cadastrarLoja', component: CadastrarLojaComponent },
-  { path: 'lojaCreate', component: LojaCreateComponent },
-  { path: 'listarLoja', component: ListarLojaComponent }
+  { path: 'cadastrarLocatario', component: CadastrarLocatarioComponent, canActivate:[AuthGuardService] },
+  { path: 'editarLocatario/:id', component: EditarLocatarioComponent, canActivate:[AuthGuardService] },
+  { path: 'editarLocatario', component: EditarLocatarioComponent, canActivate:[AuthGuardService] },
+  { path: 'listarLocatario', component: ListaLocatarioComponent, canActivate:[AuthGuardService] },
+  { path: 'cadastrarLoja', component: CadastrarLojaComponent, canActivate:[AuthGuardService] },
+  { path: 'lojaCreate', component: LojaCreateComponent, canActivate:[AuthGuardService] },
+  { path: 'listarLoja', component: ListarLojaComponent, canActivate:[AuthGuardService]}
 ];
 
 @NgModule({
@@ -105,7 +108,7 @@ const routes: Routes = [
     MatProgressSpinnerModule,
     MatGridListModule,
     MatListModule,
-    MatDialogModule
+    MatDialogModule  
   ],
   providers: [],
   bootstrap: [AppComponent],
