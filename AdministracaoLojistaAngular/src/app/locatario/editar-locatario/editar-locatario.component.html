@@ -35,7 +35,7 @@
         </mat-form-field>
 
         <mat-form-field class="locatario-full-width">
-            <mat-label> Endereço</mat-label>
+            <mat-label> Contrato</mat-label>
             <input type="text" matInput value="" [(ngModel)]="locatario.contrato" id="contrato" name="contrato" #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
             <mat-error *ngIf="f.submitted && model.invalid" class="invalid-feedback">
                 <mat-error *ngIf="model.errors.required">Favor informar o número do contrato.</mat-error>

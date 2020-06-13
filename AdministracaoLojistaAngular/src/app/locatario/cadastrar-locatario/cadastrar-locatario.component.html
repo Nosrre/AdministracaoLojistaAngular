@@ -3,43 +3,44 @@
     <form class="locatario" id="add-form" (ngSubmit)="f.form.valid && add(f)" #f="ngForm" novalidate>
 
         <mat-form-field class="locatario-full-width">
-            <mat-label> Nome</mat-label>
-            <input type="text" matInput value="" [(ngModel)]="locatario.nome" id="model" name="model" #model="ngModel" required  [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+            <mat-label class="label"> Nome</mat-label>
+            <input type="text" matInput value="" [(ngModel)]="locatario.nome" id="nome" name="nome" #model="ngModel" required  [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
             <mat-error *ngIf="f.submitted && model.invalid" class="invalid-feedback">
                 <mat-error *ngIf="model.errors.required">Favor informar o nome do locatário.</mat-error>
             </mat-error>
         </mat-form-field>
 
         <mat-form-field class="locatario-full-width">
-            <mat-label> Documento</mat-label>
-            <input type="text" matInput value="" [(ngModel)]="locatario.documento" id="model" name="model" #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+            <mat-label class="label"> Documento</mat-label>
+            <input type="text" matInput value="" [(ngModel)]="locatario.documento" id="doc" name="doc" #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
             <mat-error *ngIf="f.submitted && model.invalid" class="invalid-feedback">
                 <mat-error *ngIf="model.errors.required">Favor informar um número de documento do locatário.</mat-error>
             </mat-error>
         </mat-form-field>
 
         <mat-form-field class="locatario-full-width">
-            <mat-label> Contato</mat-label>
-            <input type="text" matInput value="" [(ngModel)]="locatario.contato" id="model" name="model" #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+            <mat-label class="label"> Contato</mat-label>
+            <input type="text" matInput value="" [(ngModel)]="locatario.contato" id="contato" name="contato" #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
             <mat-error *ngIf="f.submitted && model.invalid" class="invalid-feedback">
                 <mat-error *ngIf="model.errors.required">Favor informar um contato do locatário.</mat-error>
             </mat-error>
         </mat-form-field>
 
         <mat-form-field class="locatario-full-width">
-            <mat-label> Endereço</mat-label>
-            <input type="text" matInput value="" [(ngModel)]="locatario.endereco" id="model" name="model" #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+            <mat-label class="label"> Endereço</mat-label>
+            <input type="text" matInput value="" [(ngModel)]="locatario.endereco" id="endereco" name="endereco" #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
             <mat-error *ngIf="f.submitted && model.invalid" class="invalid-feedback">
                 <mat-error *ngIf="model.errors.required">Favor informar o endereço do locatário.</mat-error>
             </mat-error>
         </mat-form-field>
-        <div style="width: 75px;">
-            <a class="edit">
-                <i class="material-icons">
-                    add_circle
-                </i>
-            </a>
-        </div>
+
+        <mat-form-field class="locatario-full-width">
+            <mat-label class="label"> Contrato</mat-label>
+            <input type="text" matInput value="" [(ngModel)]="locatario.contrato" id="contrato" name="contrato" #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+            <mat-error *ngIf="f.submitted && model.invalid" class="invalid-feedback">
+                <mat-error *ngIf="model.errors.required">Favor informar o número do contrato.</mat-error>
+            </mat-error>
+        </mat-form-field>
 
         <button mat-raised-button color="primary">Salvar</button>
 

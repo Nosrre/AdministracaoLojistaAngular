@@ -2,8 +2,8 @@ export interface Locatario{
     id : number,
     nome : string,
     documento : string,
-    contato : string,
-    endereco : string,
+    contato : Contato,
+    endereco : Endereco,
     contrato : string
 }
 
