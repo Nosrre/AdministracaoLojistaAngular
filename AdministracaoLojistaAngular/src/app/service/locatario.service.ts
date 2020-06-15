@@ -3,17 +3,19 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Locatario} from '../model/locatario';
 import {Observable, throwError} from 'rxjs';
 import {retry, catchError} from 'rxjs/operators';
+import { AuthenticationService } from '../service/authentication.service';
+import { environment } from '../../environments/environment';
 
 @Injectable({
     providedIn: "root"
 })
 export class LocatarioService {
-    private url = 'http://localhost:8080/locatario';
+    private url =  environment.apiUrl + '/locatario';
 
-    constructor(private http: HttpClient){}
+    constructor(private http: HttpClient, private authenticationService: AuthenticationService){}
 
     httpOptions = {
-        headers: new HttpHeaders({'Contente-Type': 'application/json'})
+        headers: new HttpHeaders({'Content-Type': 'application/json'})
     }
 
     public listAll(): Observable<Locatario[]>{
@@ -33,11 +35,10 @@ export class LocatarioService {
     }
 
     add(locatario: Locatario): Observable<Locatario> {
-      return this.http.post<Locatario>(this.url, JSON.stringify(locatario), this.httpOptions)
-        .pipe(
-          retry(2),
-          catchError(this.handleError)
-        )
+      console.log(locatario)
+      let currentUser = this.authenticationService.currentUserValue;
+      debugger;
+      return this.http.post<Locatario>(this.url + '/cadastrar_locatario', JSON.stringify(locatario), this.httpOptions);
     }
 
     //criar update no back

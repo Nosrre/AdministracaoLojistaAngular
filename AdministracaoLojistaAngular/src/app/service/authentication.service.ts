@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 import { User } from '../model/user';
 
@@ -10,7 +11,7 @@ import { User } from '../model/user';
 })
 export class AuthenticationService {
 
-  url = "http://localhost:8080/authenticate";
+  url = environment.apiUrl + "/authenticate";
   
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
@@ -24,11 +25,11 @@ export class AuthenticationService {
         return this.currentUserSubject.getValue();
     }
 
-    login(username: string, password: string) {
-        return this.http.post<any>(`http://localhost:8080/authenticate`, { username, password })
+    login(username: string, password: string) {debugger;
+        return this.http.post<any>(this.url, { username, password })
             .pipe(map(user => {
                 localStorage.setItem('currentUser', JSON.stringify(user));
-                this.currentUserSubject.next(user);
+                this.currentUserSubject.next(user);debugger;
                 return user;
             }));
     }

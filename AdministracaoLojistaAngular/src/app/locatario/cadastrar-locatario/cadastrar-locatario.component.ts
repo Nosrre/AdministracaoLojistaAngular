@@ -18,9 +18,10 @@ export class CadastrarLocatarioComponent implements OnInit {
   }
 
   add(form: NgForm){
+    debugger;
     this.locatarioService.add(this.locatario).subscribe(() => {
       this.cleanForm(form);
-    });
+    });console.log(form.errors);
   }
 
   cleanForm(form: NgForm) {

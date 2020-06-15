@@ -1,37 +1,22 @@
-export interface Locatario{
-    id : number,
-    nome : string,
-    documento : string,
-    contato : Contato,
-    endereco : Endereco,
-    contrato : string
-}
-
-export interface Contato{
-    id : number
+export interface Locatario {
+    id: number,
+    nome: string,
+    documento: string,
     residencial : string,
     comercial : string,
     celular : string,
     email : string,
-    fax : string
-}
-
-export interface Endereco{
-    id : number
+    fax : string,
     rua : string,
     numero : string,
     bairro : string,
     cidade : string,
     uf : string,
-    cep : string
-}
-
-export interface Contrato{
-    id : number,
+    cep : string,
     aluguel : number,
     dataInicio : Date,
     dataFim : Date,
     dataVencimento : Date,
     descricao : string,
-    inadimplente : Boolean
+    inadimplente : Boolean,
 }
