@@ -1,7 +1,74 @@
+<mat-card>
+    <mat-card-title>Nova Loja</mat-card-title>
+    <form id="add-form" (ngSubmit)="f.form.valid && add(f)" #f="ngForm" novalidate>            
+        <mat-form-field>
+            <mat-label class="label"> Código da Loja</mat-label>
+            <input type="text" matInput value="" [(ngModel)]="loja.codigoLoja" id="codigoLoja" name="codigoLoja" #model="ngModel"
+                required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+            <mat-error *ngIf="f.submitted && model.invalid" class="invalid-feedback">
+                <mat-error *ngIf="model.errors.required">Favor informar o código da loja.</mat-error>
+            </mat-error>
+        </mat-form-field>
+            
+        <mat-form-field>
+            <mat-label class="label"> Nome da loja</mat-label>
+            <input type="text" matInput value="" [(ngModel)]="loja.nomeLoja" id="nomeLoja" name="nomeLoja" #model="ngModel"
+                required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+            <mat-error *ngIf="f.submitted && model.invalid" class="invalid-feedback">
+                <mat-error *ngIf="model.errors.required">Favor informar o nome do locatário.</mat-error>
+            </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field>
+            <mat-label class="label"> Valor do aluguel</mat-label>
+            <input type="text" matInput value="" [(ngModel)]="loja.valorAluguel" id="valorAluguel" name="valorAluguel" #model="ngModel"
+                required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+            <mat-error *ngIf="f.submitted && model.invalid" class="invalid-feedback">
+                <mat-error *ngIf="model.errors.required">Favor informar o nome do locatário.</mat-error>
+            </mat-error>
+        </mat-form-field>
+    
+        <mat-form-field>
+            <mat-label class="label"> Tamanho M²</mat-label>
+            <input type="text" matInput value="" [(ngModel)]="loja.tamanho" id="tamanho" name="tamanho" #model="ngModel"
+                required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+            <mat-error *ngIf="f.submitted && model.invalid" class="invalid-feedback">
+                <mat-error *ngIf="model.errors.required">Favor informar o nome do locatário.</mat-error>
+            </mat-error>
+        </mat-form-field>
+    
+        <select [(ngModel)]="loja.categoria" id="categoria" name="categoria" #model="ngModel"
+        required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }" class="form-control">
+            <option value=0>ALIMENTOS</option>
+            <option value=1>ROUPAS</option>
+            <option value=2>TECNOLOGIA</option>
+            <option value=3>DECORAÇÃO</option>
+            <option value=4>BRINQUEDOS</option>
+            <option value=5>ENTRETENIMENTO</option>
+        </select>
 
-<button mat-raised-button routerLink="/lojaCreate"
-color="primary">
-Nova Loja
-</button>
+        {{loja.categoria}}
 
-<app-listar-loja></app-listar-loja>
+        <mat-form-field>
+            <mat-label class="label"> Setor</mat-label>
+            <input type="text" matInput value="" [(ngModel)]="loja.setor" id="setor" name="setor" #model="ngModel"
+                required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+            <mat-error *ngIf="f.submitted && model.invalid" class="invalid-feedback">
+                <mat-error *ngIf="model.errors.required">Favor informar o setor da loja.</mat-error>
+            </mat-error>
+        </mat-form-field>
+
+        <select [(ngModel)]="loja.situacao" id="situacao" name="situacao" #model="ngModel"
+        required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }" class="form-control" >
+            <option value="0">LOCADO</option>
+            <option value="1">DISPONIVEL</option>
+            <option value="2">INDISPONIVEL</option>
+            <option value="3">MANUTENÇÃO</option>
+            <option value="4">INADIMPLENTE</option>
+        </select>
+
+        <div>
+            <button mat-raised-button color="primary" class="botao">Salvar</button>
+        </div>
+    </form>
+</mat-card>

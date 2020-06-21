@@ -1,8 +1,8 @@
-<div class="locatario-parent">
-    <h2>CADASTRAR LOCATÁRIO</h2>
-        <form class="locatario" id="update-form" (ngSubmit)="f.form.valid && update(f)" #f="ngForm" novalidate>
+<mat-card>
+    <mat-card-title>Editar Locatário</mat-card-title>
+        <form id="update-form" (ngSubmit)="f.form.valid && update(f)" #f="ngForm" novalidate>
     
-            <mat-form-field class="locatario-full-width">
+            <mat-form-field>
                 <mat-label class="label"> Nome</mat-label>
                 <input type="text" matInput value="" [(ngModel)]="locatario.nome" id="nome" name="nome" #model="ngModel"
                     required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
@@ -11,7 +11,7 @@
                 </mat-error>
             </mat-form-field>
     
-            <mat-form-field class="locatario-full-width">
+            <mat-form-field>
                 <mat-label class="label"> Documento</mat-label>
                 <input type="text" matInput value="" [(ngModel)]="locatario.documento" id="doc" name="doc" #model="ngModel"
                     required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
@@ -20,7 +20,7 @@
                 </mat-error>
             </mat-form-field>
     
-            <mat-form-field class="locatario-full-width">
+            <mat-form-field>
                 <mat-label class="label">Email</mat-label>
                 <input type="text" matInput value="" [(ngModel)]="locatario.email" id="email" name="email"
                     #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
@@ -29,7 +29,7 @@
                 </mat-error>
             </mat-form-field>
     
-            <mat-form-field class="locatario-full-width">
+            <mat-form-field>
                 <mat-label class="label">Celular</mat-label>
                 <input type="text" matInput value="" [(ngModel)]="locatario.celular" id="celular" name="celular"
                     #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
@@ -37,8 +37,35 @@
                     <mat-error *ngIf="model.errors.required">Favor informar celular do locatário.</mat-error>
                 </mat-error>
             </mat-form-field>
+
+            <mat-form-field>
+                <mat-label class="label">Comercial</mat-label>
+                <input type="text" matInput value="" [(ngModel)]="locatario.comercial" id="comercial" name="comercial"
+                    #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+                <mat-error *ngIf="f.submitted && model.invalid" class="invalid-feedback">
+                    <mat-error *ngIf="model.errors.required">Favor informar telefone comercial do locatário.</mat-error>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label class="label">Residencial</mat-label>
+                <input type="text" matInput value="" [(ngModel)]="locatario.residencial" id="residencial" name="residencial"
+                    #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+                <mat-error *ngIf="f.submitted && model.invalid" class="invalid-feedback">
+                    <mat-error *ngIf="model.errors.required">Favor informar celular do locatário.</mat-error>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label class="label">Celular</mat-label>
+                <input type="text" matInput value="" [(ngModel)]="locatario.fax" id="fax" name="fax"
+                    #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+                <mat-error *ngIf="f.submitted && model.invalid" class="invalid-feedback">
+                    <mat-error *ngIf="model.errors.required">Favor informar celular do locatário.</mat-error>
+                </mat-error>
+            </mat-form-field>
     
-            <mat-form-field class="locatario-full-width">
+            <mat-form-field >
                 <mat-label class="label">Rua</mat-label>
                 <input type="text" matInput value="" [(ngModel)]="locatario.rua" id="rua" name="rua"
                     #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
@@ -47,7 +74,7 @@
                 </mat-error>
             </mat-form-field>
     
-            <mat-form-field class="locatario-full-width">
+            <mat-form-field>
                 <mat-label class="label">Numero</mat-label>
                 <input type="text" matInput value="" [(ngModel)]="locatario.numero" id="numero" name="numero"
                     #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
@@ -56,7 +83,7 @@
                 </mat-error>
             </mat-form-field>
     
-            <mat-form-field class="locatario-full-width">
+            <mat-form-field>
                 <mat-label class="label">Bairro</mat-label>
                 <input type="text" matInput value="" [(ngModel)]="locatario.bairro" id="bairro" name="bairro"
                     #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
@@ -65,7 +92,7 @@
                 </mat-error>
             </mat-form-field>
     
-            <mat-form-field class="locatario-full-width">
+            <mat-form-field>
                 <mat-label class="label">Cidade</mat-label>
                 <input type="text" matInput value="" [(ngModel)]="locatario.cidade" id="cidade" name="cidade"
                     #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
@@ -74,7 +101,7 @@
                 </mat-error>
             </mat-form-field>
     
-            <mat-form-field class="locatario-full-width">
+            <mat-form-field>
                 <mat-label class="label">Estado</mat-label>
                 <input type="text" matInput value="" [(ngModel)]="locatario.uf" id="uf" name="uf" #model="ngModel"
                     required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
@@ -83,7 +110,7 @@
                 </mat-error>
             </mat-form-field>
     
-            <mat-form-field class="locatario-full-width">
+            <mat-form-field>
                 <mat-label class="label">Cep</mat-label>
                 <input type="text" matInput value="" [(ngModel)]="locatario.cep" id="cep" name="cep"
                     #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
@@ -91,8 +118,13 @@
                     <mat-error *ngIf="model.errors.required">Favor informar o cep</mat-error>
                 </mat-error>
             </mat-form-field>
+
+            <select [(ngModel)]="locatario.loja" id="loja" name="loja" #model="ngModel"
+            required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }" class="form-control">
+                <option *ngFor="let loja of lojas" [value]="loja.id">{{loja.categoria}}</option>
+            </select>
     
-            <mat-form-field class="locatario-full-width">
+            <mat-form-field>
                 <mat-label class="label">Aluguel</mat-label>
                 <input type="text" matInput value="" [(ngModel)]="locatario.aluguel" id="aluguel" name="aluguel"
                     #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
@@ -101,34 +133,34 @@
                 </mat-error>
             </mat-form-field>
     
-            <mat-form-field class="locatario-full-width">
+            <mat-form-field>
                 <mat-label class="label">Data Inicial</mat-label>
-                <input type="text" matInput value="" [(ngModel)]="locatario.dataInicio" id="dataInicio"
+                <input type="date" matInput value="" [(ngModel)]="locatario.dataInicio" id="dataInicio"
                     name="dataInicio" #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
                 <mat-error *ngIf="f.submitted && model.invalid" class="invalid-feedback">
                     <mat-error *ngIf="model.errors.required">Favor informar a data incial do contrato.</mat-error>
                 </mat-error>
             </mat-form-field>
     
-            <mat-form-field class="locatario-full-width">
+            <mat-form-field>
                 <mat-label class="label">Data Final</mat-label>
-                <input type="text" matInput value="" [(ngModel)]="locatario.dataFim" id="dataFim" name="dataFim"
+                <input type="date" matInput value="" [(ngModel)]="locatario.dataFim" id="dataFim" name="dataFim"
                     #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
                 <mat-error *ngIf="f.submitted && model.invalid" class="invalid-feedback">
                     <mat-error *ngIf="model.errors.required">Favor informar a data final do contrato.</mat-error>
                 </mat-error>
             </mat-form-field>
     
-            <mat-form-field class="locatario-full-width">
+            <mat-form-field>
                 <mat-label class="label">Data Vencimento</mat-label>
-                <input type="text" matInput value="" [(ngModel)]="locatario.dataVencimento" id="dataVencimento"
+                <input type="date" matInput value="" [(ngModel)]="locatario.dataVencimento" id="dataVencimento"
                     name="dataVencimento" #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
                 <mat-error *ngIf="f.submitted && model.invalid" class="invalid-feedback">
                     <mat-error *ngIf="model.errors.required">Favor informar a data vencimento do contrato.</mat-error>
                 </mat-error>
             </mat-form-field>
     
-            <mat-form-field class="locatario-full-width">
+            <mat-form-field>
                 <mat-label class="label">Descrição</mat-label>
                 <input type="text" matInput value="" [(ngModel)]="locatario.descricao" id="descricao"
                     name="descricao" #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
@@ -136,8 +168,10 @@
                     <mat-error *ngIf="model.errors.required">Favor informar a descrição do contrato.</mat-error>
                 </mat-error>
             </mat-form-field>
-    
-            <button mat-raised-button color="primary">Salvar</button>
+            
+            <div>
+                <button mat-raised-button color="primary" class="botao">Salvar</button>
+            </div>
     
         </form>
-    </div>
+</mat-card>

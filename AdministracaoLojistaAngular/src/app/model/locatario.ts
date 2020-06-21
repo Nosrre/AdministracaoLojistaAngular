@@ -6,7 +6,6 @@ export interface Locatario {
     comercial : string,
     celular : string,
     email : string,
-    fax : string,
     rua : string,
     numero : string,
     bairro : string,
@@ -19,4 +18,6 @@ export interface Locatario {
     dataVencimento : Date,
     descricao : string,
     inadimplente : Boolean,
+    inadimplenteString : string,
+    loja : number
 }

@@ -8,7 +8,7 @@ import {Locatario} from '../../model/locatario';
   styleUrls: ['./lista-locatario.component.css']
 })
 export class ListaLocatarioComponent implements OnInit {
-  displayedColumns = ['id', 'name','documento','contato','endereco','contrato', 'action'];
+  displayedColumns = ['id', 'name','documento','contato','endereco','inadimplente', 'loja', 'action'];
 
   locatarios: Locatario[];
   locatario = {} as Locatario;
@@ -22,12 +22,14 @@ export class ListaLocatarioComponent implements OnInit {
   listAll(): void{
     this.locatarioService.listAll().subscribe((locatarios: Locatario[]) => {
       this.locatarios = locatarios;
-    });
-  }
 
-  getById(id: number) {
-    this.locatarioService.getById(id).subscribe((locatario: Locatario) => {
-      this.locatario = locatario;
+      locatarios.forEach(element => {
+        if(element.inadimplente){
+          element.inadimplenteString = "Sim"
+        } else{
+          element.inadimplenteString = "Não"
+        }
+      });
     });
   }
 

@@ -1,21 +1,15 @@
-button {
+form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.botao {
     margin-bottom: 30px;
     margin-top: 30px;
-}
-.locatario-parent {
-    padding: 16px;
-    text-align: center;
-    position: absolute;
-    width:100%;
-}
-.locatario {
-    display: inline-block;
-    position: relative;
-}
-.locatario-full-width {
-    width: 100%;
 }
 
 .label{
     color:mediumvioletred;
 }
+

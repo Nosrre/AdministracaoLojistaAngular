@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { LojaService } from '../../service/loja.service';
+import { Loja } from '../../model/loja';
+import { NgForm } from '@angular/forms';
+import { Router, ActivatedRoute, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 @Component({
   selector: 'app-cadastrar-loja',
@@ -8,10 +11,24 @@ import { Router } from '@angular/router';
 })
 export class CadastrarLojaComponent implements OnInit {
   
+  loja = {} as Loja;
+  returnUrl = '/listarLoja';
 
-  constructor(private router: Router) { }
+  constructor(private lojaService: LojaService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  add(form: NgForm){
+    this.lojaService.add(this.loja).subscribe(() => {
+      this.cleanForm(form);
+    });
+    this.router.navigate([this.returnUrl]);
+  }
+
+  cleanForm(form: NgForm) {
+    form.resetForm();
+    this.loja = {} as Loja;
   }
 
 }

@@ -42,13 +42,11 @@ import { FooterComponent } from './footer/footer.component';
 import { ListaLocatarioComponent } from './locatario/lista-locatario/lista-locatario.component';
 import { CadastrarLocatarioComponent } from './locatario/cadastrar-locatario/cadastrar-locatario.component';
 import { EditarLocatarioComponent } from './locatario/editar-locatario/editar-locatario.component';
-import { LojaComponent } from './loja/loja/loja.component';
 import { EditarLojaComponent } from './loja/editar-loja/editar-loja.component';
 import { ListarLojaComponent } from './loja/listar-loja/listar-loja.component';
 import { CadastrarLojaComponent } from './loja/cadastrar-loja/cadastrar-loja.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { LojaCreateComponent } from './loja/loja-create/loja-create.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -59,8 +57,9 @@ const routes: Routes = [
   { path: 'editarLocatario', component: EditarLocatarioComponent, canActivate:[AuthGuardService] },
   { path: 'listarLocatario', component: ListaLocatarioComponent, canActivate:[AuthGuardService] },
   { path: 'cadastrarLoja', component: CadastrarLojaComponent, canActivate:[AuthGuardService] },
-  { path: 'lojaCreate', component: LojaCreateComponent, canActivate:[AuthGuardService] },
-  { path: 'listarLoja', component: ListarLojaComponent, canActivate:[AuthGuardService]}
+  { path: 'listarLoja', component: ListarLojaComponent, canActivate:[AuthGuardService]},
+  { path: 'editarLoja/:id', component: EditarLojaComponent, canActivate:[AuthGuardService] },
+
 ];
 
 @NgModule({
@@ -70,14 +69,12 @@ const routes: Routes = [
     ListaLocatarioComponent,
     CadastrarLocatarioComponent,
     EditarLocatarioComponent,
-    LojaComponent,
     EditarLojaComponent,
     ListarLojaComponent,
     CadastrarLojaComponent,
     FooterComponent,
     HomeComponent,
     LoginComponent,
-    LojaCreateComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),

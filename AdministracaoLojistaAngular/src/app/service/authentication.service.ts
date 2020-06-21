@@ -25,11 +25,11 @@ export class AuthenticationService {
         return this.currentUserSubject.getValue();
     }
 
-    login(username: string, password: string) {debugger;
+    login(username: string, password: string) {
         return this.http.post<any>(this.url, { username, password })
             .pipe(map(user => {
                 localStorage.setItem('currentUser', JSON.stringify(user));
-                this.currentUserSubject.next(user);debugger;
+                this.currentUserSubject.next(user);
                 return user;
             }));
     }

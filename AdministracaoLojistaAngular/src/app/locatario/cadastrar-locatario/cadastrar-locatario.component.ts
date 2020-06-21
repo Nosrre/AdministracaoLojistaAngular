@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { LocatarioService } from '../../service/locatario.service';
+import { LojaService } from '../../service/loja.service';
 import { Locatario } from '../../model/locatario';
+import { Loja } from '../../model/loja';
 import { NgForm } from '@angular/forms';
+import { Router, ActivatedRoute, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 @Component({
   selector: 'app-cadastrar-locatario',
@@ -11,22 +14,34 @@ import { NgForm } from '@angular/forms';
 export class CadastrarLocatarioComponent implements OnInit {
 
   locatario = {} as Locatario;
+  lojas: Loja[];
+  lojasFilter: Loja[];
+  returnUrl: string;
 
-  constructor(private locatarioService: LocatarioService) { }
+  constructor(private locatarioService: LocatarioService, private lojaService: LojaService, 
+    private route: ActivatedRoute, private router: Router,) { }
 
   ngOnInit(): void {
+    this.listAll();
+    this.returnUrl = "/listarLocatario";
   }
 
   add(form: NgForm){
-    debugger;
     this.locatarioService.add(this.locatario).subscribe(() => {
       this.cleanForm(form);
-    });console.log(form.errors);
+    });
+    this.router.navigate([this.returnUrl]);
   }
 
   cleanForm(form: NgForm) {
     form.resetForm();
     this.locatario = {} as Locatario;
+  }
+
+  listAll(): void{
+    this.lojaService.listLojaDisponivel().subscribe((lojas: Loja[]) => {
+      this.lojas = lojas;
+    });
   }
 
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../service/authentication.service';
+import { Router, ActivatedRoute, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -30,13 +30,19 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    if(this.authenticationService.currentUser != null){
+        this.authenticationService.logout();
+    }
+
       this.loginForm = this.formBuilder.group({
           username: ['', Validators.required],
           password: ['', Validators.required]
       });
 
       // get return url from route parameters or default to '/home'
-      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
+      this.returnUrl = "/home";
+      
   }
 
   // convenience getter for easy access to form fields
@@ -51,7 +57,6 @@ export class LoginComponent implements OnInit {
       if (this.loginForm.invalid) {
           return;
       }
-
       this.loading = true;
       this.authenticationService.login(this.f.username.value, this.f.password.value)
           .pipe(first())
@@ -63,7 +68,8 @@ export class LoginComponent implements OnInit {
               error => {
                   this.error = error;
                   this.loading = false;
-              });
+              }
+        );
   }
 
 }
