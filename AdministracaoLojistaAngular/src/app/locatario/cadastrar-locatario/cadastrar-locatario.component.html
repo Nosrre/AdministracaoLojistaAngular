@@ -55,15 +55,6 @@
                     <mat-error *ngIf="model.errors.required">Favor informar celular do locatário.</mat-error>
                 </mat-error>
             </mat-form-field>
-
-            <mat-form-field>
-                <mat-label class="label">Celular</mat-label>
-                <input type="text" matInput value="" [(ngModel)]="locatario.fax" id="fax" name="fax"
-                    #model="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
-                <mat-error *ngIf="f.submitted && model.invalid" class="invalid-feedback">
-                    <mat-error *ngIf="model.errors.required">Favor informar celular do locatário.</mat-error>
-                </mat-error>
-            </mat-form-field>
     
             <mat-form-field >
                 <mat-label class="label">Rua</mat-label>
